@@ -6,6 +6,9 @@ The Excel sheet continuously updates with the latest cryptocurrency prices.
 
 This is made available through two mediums:- a React-based frontend and a standalone python script
 
+## Data API
+The API used for fetching cryptocurreny data is **CoinMarketCap API**. Its Docs and more about it can be found at https://coinmarketcap.com
+
 ## Backend
 ### React Frontend's Backend
 The backend for the React frontend is a Flask application that fetches and serves cryptocurrency data. The Flask application is deployed on Railways.
