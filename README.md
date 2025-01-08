@@ -26,6 +26,7 @@ Fresh data is fetched every 5 minutes.
 
 ## Standalone Python Script
 The standalone Python script fetches live cryptocurrency data, performs analysis, and updates an Excel sheet with the latest data.
+The script is also deployed on Railways alongside the flask backend and runs as a worker process.
 
 ### Python Script
 - **File**: python_script_for_dataFetch_analysis_and_update.py
@@ -33,6 +34,7 @@ The standalone Python script fetches live cryptocurrency data, performs analysis
   - Fetches live cryptocurrency data.
   - Performs analysis on the data.
   - Updates corresponding Excel sheets with the latest data.
+- **Excel Files**: The python script stores the output excel files in this dropbox folder => https://www.dropbox.com/scl/fo/h10dzevw5usg9zcz4mged/AE1-q_9hQMKjTJ_a9_dfBjI?rlkey=75e5fm29nkjb8yl1tojh8nww9&st=ei8kaepa&dl=0
 
 ### Running the Standalone Script
 To run the standalone script and have regular updated data in Excel, follow these steps:
