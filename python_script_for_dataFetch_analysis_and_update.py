@@ -10,17 +10,19 @@ def update_excel_files():
         return
 
     data_file = 'output/crypto_data.xlsx'
-    pd.DataFrame(data).to_excel(data_file, index=False)
+    
+    with pd.ExcelWriter(data_file, engine='openpyxl', mode='w') as writer:
+        pd.DataFrame(data).to_excel(writer, index=False)
     print(f"Updated: {data_file}")
 
     analysis = analyze_data(data)
     analysis_file = 'output/crypto_analysis.xlsx'
 
-    with pd.ExcelWriter(analysis_file) as writer:
+    with pd.ExcelWriter(analysis_file, engine='openpyxl', mode='w') as writer:
         pd.DataFrame(analysis["top_5_by_market_cap"]).to_excel(writer, sheet_name="Top 5 by Market Cap", index=False)
-        pd.DataFrame([{"Average Price": analysis["average_price"]}]).to_excel(writer, sheet_name="Average Price", index=False)
-        pd.DataFrame(analysis["highest_change"]).to_excel(writer, sheet_name="Highest Change", index=False)
-        pd.DataFrame(analysis["lowest_change"]).to_excel(writer, sheet_name="Lowest Change", index=False)
+        pd.DataFrame([{"Average Price": analysis["average_price_top_50"]}]).to_excel(writer, sheet_name="Average Price", index=False)
+        pd.DataFrame(analysis["highest_24h_change"]).to_excel(writer, sheet_name="Highest Change", index=False)
+        pd.DataFrame(analysis["lowest_24h_change"]).to_excel(writer, sheet_name="Lowest Change", index=False)
 
     print(f"Updated: {analysis_file}")
 
