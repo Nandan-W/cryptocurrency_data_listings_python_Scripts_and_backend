@@ -42,8 +42,7 @@ def fetch_crypto_data():
 
 
         print("Fetching crypto data...")
-        print("params = ",API_PARAMETERS)
-        print("headers = ",HEADERS)
+        
         response = requests.get(API_URL, headers=HEADERS, params=API_PARAMETERS)
         response.raise_for_status()
         data = response.json()

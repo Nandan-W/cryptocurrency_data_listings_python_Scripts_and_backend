@@ -2,6 +2,7 @@ from flask import Flask, jsonify
 from data_fetcher import fetch_crypto_data
 from data_analyzer import analyze_data
 from flask_cors import CORS
+import os
 
 
 app = Flask(__name__)
@@ -34,5 +35,10 @@ def analyze():
     return jsonify({"data": analysis
     ,"timestamp":data_timeStamp})
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    env = os.getenv("FLASK_ENV", "development")
+
+    if env == "development":
+        app.run(debug=True, host="127.0.0.1", port=5000)
+    else:
+        app.run(host="0.0.0.0", port=int(os.getenv("PORT", 5000)))
